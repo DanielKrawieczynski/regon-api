@@ -1,5 +1,5 @@
 {
-  "name": "mrcnpdlk/regon-api",
+  "name": "danielkrawieczynski/regon-api",
   "description": "GUS Regon API",
   "keywords": [
     "gus",
@@ -12,15 +12,21 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "Marcin Pudełek",
-      "email": "marcin@pudelek.org.pl",
+      "name": "Daniel Krawieczyński",
+      "email": "daniel@krawieczynski.pl",
       "role": "Developer"
     }
   ],
   "minimum-stability": "stable",
   "prefer-stable": true,
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/DanielKrawieczynski/lib-mapper"
+    }
+  ],
   "require": {
-    "php": ">=7.2",
+    "php": "^7.3|^8.0",
     "ext-soap": "*",
     "psr/log": "^1",
     "psr/simple-cache": "^1",
@@ -28,7 +34,7 @@
     "ext-simplexml": "*",
     "ext-dom": "*",
     "mrcnpdlk/lib-configuration": "^0",
-    "mrcnpdlk/lib-mapper": "^0",
+    "danielkrawieczynski/lib-mapper": "dev-master",
     "mrcnpdlk/lib-exception": "^0",
     "myclabs/php-enum": "^1",
     "gregwar/cache": "^1",
