@@ -41,19 +41,19 @@ class CompanyModel
      */
     public $name;
     /**
-     * @var string
+     * @var string|null
      */
     public $voivodshipName;
     /**
-     * @var string
+     * @var string|null
      */
     public $poviatName;
     /**
-     * @var string
+     * @var string|null
      */
     public $communeName;
     /**
-     * @var string
+     * @var string|null
      */
     public $cityName;
     /**
