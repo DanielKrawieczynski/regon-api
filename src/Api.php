@@ -47,7 +47,7 @@ class Api
      */
     private $nativeApi;
     /**
-     * @var \Gregwar\Cache\Cache
+     * @var \Mrcnpdlk\Api\Regon\Cache
      */
     private $cache;
 
@@ -56,17 +56,13 @@ class Api
      *
      * @param \Mrcnpdlk\Api\Regon\Config $oConfig
      */
-    public function __construct(Config $oConfig)
+    public function __construct(Config $oConfig, \Mrcnpdlk\Api\Regon\Cache $cache = null)
     {
         $this->mapper    = new Mapper(null);
         $this->config    = $oConfig;
         $this->nativeApi = new NativeApi($oConfig);
 
-        $oCache = new Cache();
-        $oCache
-            ->setCacheDirectory($this->config->getCacheDir())
-            ->setPrefixSize(0);
-        $this->cache = $oCache;
+        $this->cache = is_null($cache) ? new GregwarCache($this->config) : $cache;
     }
 
     /**

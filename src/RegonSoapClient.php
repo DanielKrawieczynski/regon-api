@@ -56,14 +56,14 @@ class RegonSoapClient extends SoapClient
      * @param string $location location
      * @param string $action   action
      * @param int    $version  version
-     * @param int    $oneWay   [optional] <p>
+     * @param bool    $oneWay   [optional] <p>
      *                         If one_way is set to 1, this method returns nothing.
      *                         Use this where a response is not expected.
      *                         </p>
      *
      * @return string response
      */
-    public function __doRequest($request, $location, $action, $version, $oneWay = 0): string
+    public function __doRequest($request, $location, $action, $version, bool $oneWay = false): string
     {
         $dom                     = new DOMDocument('1.0', 'UTF-8');
         $dom->preserveWhiteSpace = false;
