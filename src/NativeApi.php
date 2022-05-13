@@ -25,6 +25,7 @@ use Mrcnpdlk\Api\Regon\Enum\ReportCompactEnum;
 use Mrcnpdlk\Api\Regon\Enum\ReportFullEnum;
 use Mrcnpdlk\Api\Regon\Enum\ValueEnum;
 use Mrcnpdlk\Api\Regon\Exception\AuthException;
+use Mrcnpdlk\Api\Regon\Exception\InvalidResponse;
 use Mrcnpdlk\Api\Regon\Exception\NotFoundException;
 use Mrcnpdlk\Api\Regon\Sdk\DaneSzukajPodmiotyResponse;
 use Mrcnpdlk\Api\Regon\Sdk\GetValueResponse;
@@ -249,7 +250,11 @@ class NativeApi
             throw new NotFoundException($this->GetValue(ValueEnum::KomunikatTresc()), $code);
         }
 
-        $res = new \SimpleXMLElement($response);
+        try {
+            $res = new \SimpleXMLElement($response);
+        } catch (\Exception $ex) {
+            throw new InvalidResponse('Response could not be parsed: ' . json_encode($response) . '.', previous: $ex);
+        }
 
         foreach ($res->children() as $child) {
             $item = json_decode(json_encode($child), false);
